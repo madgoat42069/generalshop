@@ -23,10 +23,18 @@ const CreatePage = () => {
                 title: "Error",
                 description: message,
                 status: "error",
-                isClosable: true
+                isClosable: true,
+            });
+        } else {
+            toast({
+                title: "Success",
+                description: message,
+                status: "success",
+                isClosable: true,
             })
         }
-    }
+        setNewProduct({ name: "", price: "", image: ""});
+    };
 
     return (
         <Container maxW={"container.sm"}>
