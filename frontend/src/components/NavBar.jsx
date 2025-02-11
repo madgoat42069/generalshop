@@ -1,9 +1,13 @@
-import { Button, Container, Flex, HStack, Text } from "@chakra-ui/react";
+import { Button, Container, Flex, HStack, Text, useColorMode } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { CiCirclePlus } from "react-icons/ci";
- 
+import { IoMoon } from "react-icons/io5";
+import { LuSun } from "react-icons/lu";
+
 
 const NavBar = () => {
+const { colorMode, toggleColorMode } = useColorMode();
+
     return (
         <Container maxW={"1140px"} px={4}>
             <Flex
@@ -23,6 +27,7 @@ const NavBar = () => {
                     textAlign={ "center"}
                     bgGradient={"linear(to-r, magenta.400, purple.400)"}
                     bgClip={"text"}
+                    color={"purple.400"}
                 >
                     <Link to={"/"}>Product Store</Link>
                 </Text>
@@ -35,6 +40,7 @@ const NavBar = () => {
                             <CiCirclePlus fontSize={"20"} />
                         </Button>
                     </Link>
+                    <Button onClick={toggleColorMode}>{colorMode === "light" ? <IoMoon /> : <LuSun size="20" />}</Button> 
                 </HStack>
 
 
