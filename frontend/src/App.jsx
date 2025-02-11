@@ -4,8 +4,11 @@ import CreatePage from './pages/CreatePage';
 import HomePage from './pages/HomePage';
 import NavBar from './components/NavBar';
 
+
 function App(){
-  return (
+   
+
+   return (
     <Box minH={"100vh"}>
       <NavBar />
       <Routes>
