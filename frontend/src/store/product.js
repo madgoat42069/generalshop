@@ -28,4 +28,14 @@ export const useProductStore = create((set) => ({
         const data = await res.json();
         set({ products: data.data });
     },
+    deleteProduct: async (pid) => {
+        const res = await fetch(`/api/products/${pid}`, {
+            method: "DELETE"
+        });
+        const data = await res.json();
+
+        // update with no refresh.
+        set((state) => ({ products: state.products.filter((product) => product._id !== pid) }));
+        return { success: true, message: data.message };
+    }
 }));
