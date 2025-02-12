@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { SimpleGrid } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useProductStore } from "../store/product";
+import ProductCard from "../components/ProductCard";
 
 const HomePage = () => {
     
@@ -33,7 +34,7 @@ const HomePage = () => {
                     
                 >
                     {products.map((product) => (
-                        <ProductCard key={products._id} product={product}/>
+                        <ProductCard key={product._id} product={product}/>
                     ))}
                 </SimpleGrid>
 
