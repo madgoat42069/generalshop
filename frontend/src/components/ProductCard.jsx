@@ -14,7 +14,6 @@ const ProductCard = ({ product }) => {
     const toast = useToast();
     const { isOpen, onOpen, onClose } = useDisclosure(); 
     
-    //  Added state for updatedProduct
     const [updatedProduct, setUpdatedProduct] = useState({ ...product });
 
     const handleDeleteProduct = async (pid) => {
@@ -29,8 +28,24 @@ const ProductCard = ({ product }) => {
     };
 
     const handleUpdateProduct = async (pid, updatedProduct) => {
-        await updateProduct(pid, updatedProduct);
+        const {success, message} =await updateProduct(pid, updatedProduct);
         onClose();
+        if(!success) {
+            toast({
+                title: "Error",
+                description: message,
+                status: "error",
+                isClosable: true,
+                duration: 3000
+            });
+        } else{
+            toast({
+                title: "Success",
+                description: "Product updated successfully",
+                status: "success",
+                isClosable: true,
+                duration: 3000});
+        }
     };
 
     return (
